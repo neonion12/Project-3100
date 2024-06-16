@@ -57,6 +57,12 @@
             margin-top: 10px;
         }
     </style>
+     <script>
+        function login() {
+            sessionStorage.setItem('isLoggedIn', 'true');
+            window.location.href = '/welcome';
+        }
+    </script>
 </head>
 <body>
 
@@ -69,7 +75,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit">Login</button>
+        <button type="submit" onclick="login()">Login</button>
     </form>
     <div style="text-align:center; margin-top:20px;">
         <a href="/userRegistration">Not registered yet? Register here.</a>

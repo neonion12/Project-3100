@@ -41,9 +41,9 @@
             text-align: center;
         }
         .club-box:hover {
-            background-color: rgba(0, 86, 179, 0.8);
+            background-color: rgba(221, 21, 21, 0.8);
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
         .club-box h2 {
             font-size: 24px;
@@ -53,10 +53,54 @@
             font-size: 16px;
             line-height: 1.6;
         }
+        .logout-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #d72638;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .logout-button:hover {
+            background-color: #d8cccd;
+            color: red;
+        }
     </style>
+    <script>
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        sessionStorage.setItem('isLoggedIn', 'false');
+                        window.location.href = '/login';
+                    }
+                });
+        }
+
+        function checkUserSession() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+                window.location.href = '/login';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserSession();
+        });
+
+        window.addEventListener('popstate', function(event) {
+            checkUserSession();
+        });
+    </script>
 </head>
 <body>
     <h1>Welcome, <span th:text="${nickname}"></span>!</h1>
+    <button class="logout-button" onclick="logout()">Logout</button>
     <div class="club-container">
         <div class="club-box">
             <h2>Chess Club of RUET</h2>
