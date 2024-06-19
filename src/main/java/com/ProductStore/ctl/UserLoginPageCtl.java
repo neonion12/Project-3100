@@ -23,6 +23,11 @@ public class UserLoginPageCtl {
         return "login";
     }
 
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "/about_us";
+    }
+
     @PostMapping("/loginUser")
     public String loginUser(@RequestParam("email") String email,
                             @RequestParam("password") String password,

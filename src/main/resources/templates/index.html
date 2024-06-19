@@ -46,6 +46,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .buttons-container button:hover {
             background-color: #0056b3;
@@ -62,6 +63,24 @@
             color: white;
             font-size: 24px;
             line-height: 1.5;
+        }
+        .about-us-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: transparent;
+            border: 2px solid #007bff;
+            border-radius: 10px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .about-us-button:hover {
+            background-color: green;
+            color: #fff;
+            border: 2px solid green;
         }
     </style>
 </head>
@@ -80,6 +99,7 @@
     <div class="typewriter-container" id="typewriter">
         <!-- The text will be typed out here -->
     </div>
+    <button class="about-us-button" onclick="window.location.href='/about'">About Us</button>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
